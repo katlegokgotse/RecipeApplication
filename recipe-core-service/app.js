@@ -18,7 +18,7 @@ app.get('/', (request, response) =>{
     response.json(status);
 });
 
-app.get('/api/categories', async(request, response) => {
+app.get('/categories', async(request, response) => {
     try {
         const { data } = await axiosModel.getCategories();
         response.json(data)
@@ -28,7 +28,7 @@ app.get('/api/categories', async(request, response) => {
 });
 
 
-app.get('/api/ingredients', async(request, response) => {
+app.get('/ingredients', async(request, response) => {
     try {
         const { data } = await axiosIngredients.getIngredients();
         response.json(data);

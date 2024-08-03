@@ -1,5 +1,5 @@
 const axios = require('axios');
-const ingredients = process.env.BASE_URL || 'www.themealdb.com/api/json/v1/1/random.php';
+const ingredients = 'https://www.themealdb.com/api/json/v1/1/random.php';
 
 options = {
     method: 'GET',
