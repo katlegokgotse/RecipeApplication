@@ -13,7 +13,10 @@ export default function Home() {
         recipeName={"Pizza"}/>
         </div>
         <div  className="w-[70%] justify-content-center">
-          <CategoriesCard text={"Beef"} imageLink={"https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"} />
+          {
+            
+          }
+            <CategoriesCard text={"Beef"} imageLink={"https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"} />
         </div>
       </main>
   );
