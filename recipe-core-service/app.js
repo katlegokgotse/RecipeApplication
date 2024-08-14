@@ -5,7 +5,7 @@ const { default: axios } = require('axios');
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3028;
 app.listen(PORT, ()=> {
     console.log("Server listening on PORT", PORT)
 })
