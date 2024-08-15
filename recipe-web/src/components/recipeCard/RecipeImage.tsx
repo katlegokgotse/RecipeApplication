@@ -11,7 +11,7 @@ export const RecipeImage = (imageProps: ImageProps) => {
         style={{
             borderRadius: '75%',
             width: '100%',
-            height: '25vh'
+            height: '30vh'
         }}
         src={imageProps.imageLink} 
         alt={imageProps.imageDescription} 

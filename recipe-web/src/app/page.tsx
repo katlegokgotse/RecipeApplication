@@ -6,14 +6,18 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [icategories, setCategories] = useState([]);
+  const [meal, setMeal] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try{
-        const categoriesResponse = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
-      if (categoriesResponse.ok){
+        const categoriesResponse : Response = await fetch("https://www.themealdb.com/api/json/v1/1/categories.php");
+        const randomMealResponse : Response = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
+      if (categoriesResponse.ok && randomMealResponse.ok){
         const categoriesData = await categoriesResponse.json();
+        const mealData = await randomMealResponse.json();
           setCategories(categoriesData.categories);
+          setMeal(mealData.meals)
       } else {
         throw new Error("Categories error")
       }
@@ -27,10 +31,18 @@ export default function Home() {
       <main className="flex flex-col justify-content-center items-center">
         <h1>Random Meal of the day!</h1>
         <div className="w-[70%] justify-content-center">
-       <RecipeCard
-        recipeImage={"https://www.themealdb.com/images/media/meals/syqypv1486981727.jpg"} 
-        recipeDescription={"This is a pizza"} 
-        recipeName={"Pizza"}/>
+        {
+          error ? (
+            <p>Error: {error}</p>
+          ) : (
+            meal.map((meals)=> (
+              <RecipeCard
+              recipeImage={meals.strMealThumb} 
+              recipeDescription={meals.strInstructions} 
+              recipeName={meals.strMeal}/>
+            ))
+           
+          )}
         </div>
         <div  className="w-[70%] justify-content-center">
             { 
